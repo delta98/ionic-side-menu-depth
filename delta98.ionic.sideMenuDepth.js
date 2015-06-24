@@ -4,6 +4,8 @@ angular.module('delta98.ionic.sideMenuDepth', [])
         restrict: 'A',
         link: function ($scope, $element, $attr) {
             var sideMenu    = angular.element($element[0].offsetParent).find('ion-side-menu')[0];
+            
+            // @TODO retrieve values from $attr
             var scrollDelay = 0.4;
             var initScale   = 0.7;
 
@@ -16,6 +18,7 @@ angular.module('delta98.ionic.sideMenuDepth', [])
                 ionic.requestAnimationFrame(function () {
                     sideMenu.style[ionic.CSS.TRANSFORM] = 'scale(' + scale + ')';
 
+                    // @TODO 138 is half of 275 which is default menu view width, this needs to come from sideMenu.offsetWidth
                     sideMenu.style.opacity = (1 - (1 - (newVal / 138)));
                 });
             });
